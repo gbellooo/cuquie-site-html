@@ -25,7 +25,7 @@ const products = [
     price: 7.00,
     image: "images/products/cookie_brigadeiro.png",
     category: "Tradicionais",
-    featured: true
+    featured: false
   },
   {
     id: 4,
@@ -34,7 +34,7 @@ const products = [
     price: 7.00,
     image: "images/products/cookie_mm.png",
     category: "Tradicionais",
-    featured: true
+    featured: false
   },
   {
     id: 5,
@@ -43,7 +43,7 @@ const products = [
     price: 7.00,
     image: "images/products/cookie_kitkat.png",
     category: "Tradicionais",
-    featured: true
+    featured: false
   },
   {
     id: 6,
