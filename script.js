@@ -239,7 +239,7 @@ function calculateTotal() {
 
 // Finalizar pedido via WhatsApp
 function finishOrder() {
-    const phoneNumber = '5511999999999'; // Número de exemplo
+    const phoneNumber = '5511962774367'; // Número de exemplo
     
     // Construir mensagem com detalhes do pedido
     let message = 'Olá! Gostaria de fazer um pedido:\n\n';
