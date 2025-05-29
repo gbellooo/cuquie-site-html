@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuquiê - Cookies Artesanais</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Feedback visual para adição ao carrinho */
+        .add-to-cart-feedback {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background-color: var(--success);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            opacity: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .add-to-cart-feedback.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+        
+        /* Menu mobile responsivo */
+        @media (max-width: 768px) {
+            .menu.active {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background-color: var(--primary);
+                padding: 20px;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            }
+            
+            .menu.active li {
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Cabeçalho -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="images/logo.png" alt="Cuquiê Logo">
+                <h1>Cuquiê</h1>
+            </div>
+            <nav>
+                <ul class="menu">
+                    <li><a href="#inicio">Início</a></li>
+                    <li><a href="#produtos">Produtos</a></li>
+                    <li><a href="#sobre">Sobre</a></li>
+                </ul>
+                <div class="cart-icon" id="cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </div>
+            </nav>
+            <div class="menu-mobile">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Banner Principal -->
+    <section class="banner" id="inicio">
+        <div class="container">
+            <div class="banner-content">
+                <h2>Bem-vindo à Cuquiê!</h2>
+                <p>Os cookies mais deliciosos da cidade, feitos com muito amor e ingredientes selecionados.</p>
+                <a href="#produtos" class="btn">Ver Produtos</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Produtos em Destaque -->
+    <section class="featured-products">
+        <div class="container">
+            <h2>Cookies em Destaque</h2>
+            <div class="products-grid" id="featured-products">
+                <!-- Produtos em destaque serão inseridos via JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Todos os Produtos -->
+    <section class="all-products" id="produtos">
+        <div class="container">
+            <h2>Nosso Catálogo Completo</h2>
+            <div class="products-grid" id="all-products">
+                <!-- Todos os produtos serão inseridos via JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre Nós -->
+    <section class="about" id="sobre">
+        <div class="container">
+            <h2>Sobre a Cuquiê</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>A Cuquiê nasceu da paixão por cookies artesanais e do desejo de levar doces momentos para a vida das pessoas.</p>
+                    <p>Todos os nossos produtos são feitos com ingredientes selecionados e muito carinho, garantindo sabor e qualidade em cada mordida.</p>
+                    <p>Oferecemos diversas opções de cookies, desde os tradicionais até receitas especiais.</p>
+                </div>
+                <div class="about-image">
+                    <img src="images/logo.png" alt="Cookies Cuquiê">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="images/logo.png" alt="Cuquiê Logo">
+                    <h3>Cuquiê</h3>
+                </div>
+                <div class="footer-info">
+                    <div class="footer-section">
+                        <h4>Horário de Funcionamento</h4>
+                        <p>Segunda a Sexta: 9h às 18h</p>
+                        <p>Sábado: 9h às 14h</p>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Contato</h4>
+                        <p>WhatsApp: (11) 99999-9999</p>
+                        <p>Email: contato@cuquie.com.br</p>
+                    </div>
+                </div>
+                <div class="social-media">
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Cuquiê - Todos os direitos reservados</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Carrinho de Compras -->
+    <div class="cart-overlay" id="cart-overlay">
+        <div class="cart">
+            <div class="cart-header">
+                <h3>Seu Carrinho</h3>
+                <button class="close-cart" id="close-cart">&times;</button>
+            </div>
+            <div class="cart-items" id="cart-items">
+                <!-- Itens do carrinho serão inseridos via JavaScript -->
+            </div>
+            <div class="cart-empty" id="cart-empty">
+                <p>Seu carrinho está vazio</p>
+            </div>
+            <div class="cart-footer" id="cart-footer">
+                <div class="cart-total">
+                    <span>Total:</span>
+                    <span id="cart-total">R$ 0,00</span>
+                </div>
+                
+                <div class="delivery-options">
+                    <h4>Escolha como receber seu pedido:</h4>
+                    <div class="delivery-option">
+                        <input type="radio" id="retirada" name="delivery" value="retirada" checked>
+                        <label for="retirada">
+                            <div class="option-title">Retirada na loja</div>
+                            <div class="option-desc">Retire seu pedido diretamente em nossa loja</div>
+                        </label>
+                    </div>
+                    <div class="delivery-option">
+                        <input type="radio" id="uber" name="delivery" value="uber">
+                        <label for="uber">
+                            <div class="option-title">Uber Moto</div>
+                            <div class="option-desc">Entrega rápida via Uber Moto</div>
+                        </label>
+                    </div>
+                    <div class="delivery-option">
+                        <input type="radio" id="99" name="delivery" value="99">
+                        <label for="99">
+                            <div class="option-title">99 Entrega</div>
+                            <div class="option-desc">Entrega via 99 Entrega</div>
+                        </label>
+                    </div>
+                </div>
+                
+                <button class="checkout-btn" id="checkout-btn">Finalizar Pedido via WhatsApp</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="products.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
